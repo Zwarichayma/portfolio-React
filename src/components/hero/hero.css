@@ -67,4 +67,7 @@ section.hero {
   /* ===================================
       2. Right Section ==> animation
   ====================================== */
-  
+  .animation{
+    width: 100%;
+    translate: 100px 55px;
+  }

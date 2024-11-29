@@ -1,5 +1,4 @@
-{
-  "compilerOptions": {
+{"compilerOptions": {
     "checkJs": true,
     "jsx": "react-jsx",
     "baseUrl": "src",

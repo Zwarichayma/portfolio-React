@@ -1,12 +1,13 @@
 /* ========================
- table of contents
-===========================
+   Table of Contents
+=========================== 
 1. Left Section ==> Buttons
 2. Right Section ==> Card
-3- Responsive Design (media query)*/
+3. Responsive Design (Media Queries)
+=========================== */
 
 main.flex {
-  gap: 2.64rem;
+  gap: 3rem; /* Augmenté pour espacement entre les sections */
   align-items: start;
 }
 
@@ -47,15 +48,15 @@ main section.left-section.flex button.active {
 ================================== */
 
 main section.right-section.flex {
-  /* flex-grow: 1; */
   justify-content: center;
   flex-wrap: wrap;
-
-  column-gap: 16px;
-  row-gap: 2rem;
+  gap: 1.5rem; /* Uniformise l'espacement entre les cartes */
 }
 
 .card {
+  flex: 1 1 calc(30% - 1rem); /* Chaque carte occupe environ 30% de la largeur */
+  max-width: 300px; /* Limite la largeur maximale */
+  padding: 1rem; /* Ajoute un espace intérieur */
   border: 1px solid rgba(93, 188, 252, 0.3);
   border-radius: 5px;
   transition: 0.3s;
@@ -63,6 +64,8 @@ main section.right-section.flex {
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.05)
   );
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+  text-align: center;
 }
 
 .card:hover {
@@ -73,6 +76,8 @@ main section.right-section.flex {
 }
 
 .card img {
+  max-width: 100%; /* Rend les images responsive */
+  height: auto; /* Maintient les proportions */
   border-radius: 5px;
 }
 
@@ -81,14 +86,15 @@ main section.right-section.flex {
 }
 
 .card .box .title {
+  font-size: 1.1rem;
+  font-weight: bold;
   color: var(--title);
 }
 
 .card .box .sub-title {
   color: var(--subtitle);
-  font-size: 0.8rem;
-  margin-top: 0.7rem;
-  margin-bottom: 1.1rem;
+  font-size: 0.85rem;
+  margin: 0.7rem 0 1.1rem;
 }
 
 .card .box .icons {
@@ -99,11 +105,12 @@ main section.right-section.flex {
 .card .icon-link {
   font-size: 1.2rem;
   color: var(--subtitle);
+  transition: transform 0.2s, color 0.2s; /* Transition douce */
 }
 
 .card .icon-github:hover,
 .card .icon-link:hover {
-  font-size: 1.25rem;
+  transform: scale(1.2); /* Agrandit légèrement l'icône */
   color: var(--icon-hover);
   cursor: pointer;
 }
@@ -114,11 +121,15 @@ main section.right-section.flex {
   margin-right: 12px;
 }
 
-
-
 /* =====================================
-  3- Responsive Design (media query)
+   3- Responsive Design (Media Queries)
 ======================================== */
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(45% - 1rem); /* Occupe 45% de la largeur */
+  }
+}
 
 @media (max-width: 600px) {
   main.flex {
@@ -138,5 +149,29 @@ main section.right-section.flex {
     width: 7rem;
     padding: 0.8rem 0;
     font-size: 0.9rem;
+  }
+
+  .card {
+    flex: 1 1 calc(100% - 1rem); /* Une carte par ligne sur petits écrans */
+    max-width: 100%;
+  }
+
+  .card .box {
+    padding: 0.8rem;
+  }
+
+  .card .box .title {
+    font-size: 1rem; /* Adapte la taille du texte */
+  }
+
+  .card .box .sub-title {
+    font-size: 0.75rem; /* Adapte également le sous-titre */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* Une carte occupe 100% de la largeur */
+    max-width: 100%;
   }
 }
